@@ -1,5 +1,9 @@
 package com.katas.greed;
 
+
+/**
+ * +Info: https://www.codewars.com/kata/5270d0d18625160ada0000e4/java
+ */
 public class Greed {
 
     private static final int NUM_GROUP_VALUES = 3;

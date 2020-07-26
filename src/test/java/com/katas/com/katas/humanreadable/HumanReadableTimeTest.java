@@ -8,16 +8,12 @@ class HumanReadableTimeTest {
 
     @Test
     public void testShouldThrowAnExceptionIfSecondsAreLowestThanZero() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            HumanReadableTime.makeReadable(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> HumanReadableTime.makeReadable(-1));
     }
 
     @Test
     public void testShouldThrowAnExceptionIfSecondsAreHighestThenMaxAllowedValue() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            HumanReadableTime.makeReadable(HumanReadableTime.MAX_ALLOWED_SECONDS + 1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> HumanReadableTime.makeReadable(HumanReadableTime.MAX_ALLOWED_SECONDS + 1));
     }
 
     @Test

@@ -21,7 +21,7 @@ class HumanReadableTimeTest {
     }
 
     @Test
-    public void Tests() {
+    public void testValidCases() {
         assertEquals("00:00:00", HumanReadableTime.makeReadable(0), "makeReadable(0)");
         assertEquals("00:00:05", HumanReadableTime.makeReadable(5), "makeReadable(5)");
         assertEquals("00:01:00", HumanReadableTime.makeReadable(60), "makeReadable(60)");

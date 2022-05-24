@@ -25,4 +25,11 @@ class MarsRoverTest {
 
         assertEquals("0:0:W", marsRover.execute("L"));
     }
+
+    @Test
+    void shouldProcessMultipleDirectionChanges() {
+        var marsRover = new MarsRover();
+
+        assertEquals("0:0:E", marsRover.execute("RRRRR"));
+    }
 }

@@ -16,44 +16,44 @@ class DirectionTest {
     void shouldChangeDirectionToEastIfTurnToRightFromInitialPosition() {
         var direction = new Direction();
 
-        direction.turnRight();
+        var newDirection = direction.turnRight();
 
-        assertEquals("E", direction.direction());
+        assertEquals("E", newDirection.direction());
     }
 
     @Test
     void shouldChangeDirectionToWestIfTurnToLeftFromInitialPosition() {
         var direction = new Direction();
 
-        direction.turnLeft();
+        var newDirection = direction.turnLeft();
 
-        assertEquals("W", direction.direction());
+        assertEquals("W", newDirection.direction());
     }
 
     @Test
     void shouldProcessMultipleDirectionChangesToTheRight() {
         var direction = new Direction();
 
-        direction.turnRight();
-        direction.turnRight();
-        direction.turnRight();
-        direction.turnRight();
-        direction.turnRight();
+        var newDirection = direction.turnRight()
+                .turnRight()
+                .turnRight()
+                .turnRight()
+                .turnRight();
 
-        assertEquals("E", direction.direction());
+        assertEquals("E", newDirection.direction());
     }
 
     @Test
     void shouldProcessMultipleDirectionChangesToTheLeft() {
         var direction = new Direction();
 
-        direction.turnLeft();
-        direction.turnLeft();
-        direction.turnLeft();
-        direction.turnLeft();
-        direction.turnLeft();
-        direction.turnLeft();
+        var newDirection = direction.turnLeft()
+                .turnLeft()
+                .turnLeft()
+                .turnLeft()
+                .turnLeft()
+                .turnLeft();
 
-        assertEquals("S", direction.direction());
+        assertEquals("S", newDirection.direction());
     }
 }

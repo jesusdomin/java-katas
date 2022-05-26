@@ -11,23 +11,29 @@ public class Direction {
             2, "S",
             3, "W");
 
-    private Integer value;
+    private final Integer value;
 
     public Direction() {
-        this.value = 0;
+        this(0);
+    }
+
+    public Direction(Integer direction) {
+        this.value = direction;
     }
 
     public String direction() {
         return CARDINAL_POINTS_MAPPING.get(value);
     }
 
-    public void turnRight() {
+    public Direction turnRight() {
         int nextDirection = value + 1;
-        value = nextDirection % 4 <= 0 ? NORTH : nextDirection;
+
+        return new Direction(nextDirection % 4 <= 0 ? NORTH : nextDirection);
     }
 
-    public void turnLeft() {
+    public Direction turnLeft() {
         int nextDirection = value - 1;
-        value = nextDirection % 4 < 0 ? WEST : nextDirection;
+
+        return new Direction(nextDirection % 4 < 0 ? WEST : nextDirection);
     }
 }

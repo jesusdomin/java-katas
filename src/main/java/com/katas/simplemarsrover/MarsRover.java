@@ -1,16 +1,16 @@
 package com.katas.simplemarsrover;
 
 public class MarsRover {
-    private final Compass compass;
+    private final Direction direction;
 
     public MarsRover() {
-        this.compass = new Compass();
+        this.direction = new Direction();
     }
 
     public String execute(String commands) {
         processCommands(commands);
 
-        return "0:0:" + compass.direction();
+        return "0:0:" + direction.direction();
     }
 
     private void processCommands(String commands) {
@@ -21,11 +21,11 @@ public class MarsRover {
 
     private void processSingleCommand(Character command) {
         if (command.equals('R')) {
-            compass.turnRight();
+            direction.turnRight();
         }
 
         if (command.equals('L')) {
-            compass.turnLeft();
+            direction.turnLeft();
         }
     }
 }

@@ -9,7 +9,7 @@ class DirectionTest {
     void shouldEnsureInitialDirectionIsNorth() {
         var direction = new Direction();
 
-        assertEquals("N", direction.direction());
+        assertEquals("N", direction.cardinalPoint());
     }
 
     @Test
@@ -18,7 +18,7 @@ class DirectionTest {
 
         var newDirection = direction.turnRight();
 
-        assertEquals("E", newDirection.direction());
+        assertEquals("E", newDirection.cardinalPoint());
     }
 
     @Test
@@ -27,7 +27,7 @@ class DirectionTest {
 
         var newDirection = direction.turnLeft();
 
-        assertEquals("W", newDirection.direction());
+        assertEquals("W", newDirection.cardinalPoint());
     }
 
     @Test
@@ -40,7 +40,7 @@ class DirectionTest {
                 .turnRight()
                 .turnRight();
 
-        assertEquals("E", newDirection.direction());
+        assertEquals("E", newDirection.cardinalPoint());
     }
 
     @Test
@@ -54,6 +54,6 @@ class DirectionTest {
                 .turnLeft()
                 .turnLeft();
 
-        assertEquals("S", newDirection.direction());
+        assertEquals("S", newDirection.cardinalPoint());
     }
 }

@@ -21,7 +21,7 @@ public class Direction {
         this.value = direction;
     }
 
-    public String direction() {
+    public String cardinalPoint() {
         return CARDINAL_POINTS_MAPPING.get(value);
     }
 

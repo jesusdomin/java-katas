@@ -38,13 +38,13 @@ public class MarsRover {
 
     private void move() {
         try {
-            position = position.move(direction.direction());
+            position = position.move(direction.cardinalPoint());
         } catch (PositionOutOfLimitsException e) {
             direction = direction.wrapAround();
         }
     }
 
     private String buildOutput() {
-        return position.value() + ":" + direction.direction();
+        return position.value() + ":" + direction.cardinalPoint();
     }
 }

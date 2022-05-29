@@ -1,31 +1,50 @@
 package com.katas.simplemarsrover;
 
 public class MarsRover {
-    private final Direction direction;
+    private Direction direction;
+    private Position position;
 
-    public MarsRover() {
+    public MarsRover() throws PositionOutOfLimitsException {
         this.direction = new Direction();
+        this.position = new Position();
     }
 
     public String execute(String commands) {
         processCommands(commands);
 
-        return "0:0:" + direction.direction();
+        return buildOutput();
     }
 
     private void processCommands(String commands) {
-        commands
-                .chars()
+        commands.chars()
                 .forEach(command -> processSingleCommand((char) command));
     }
 
     private void processSingleCommand(Character command) {
-        if (command.equals('R')) {
-            direction.turnRight();
+        switch (command) {
+            case 'R' -> turnRight();
+            case 'L' -> turnLeft();
+            case 'M' -> move();
         }
+    }
 
-        if (command.equals('L')) {
-            direction.turnLeft();
+    private void turnRight() {
+        direction = direction.turnRight();
+    }
+
+    private void turnLeft() {
+        direction = direction.turnLeft();
+    }
+
+    private void move() {
+        try {
+            position = position.move(direction.direction());
+        } catch (PositionOutOfLimitsException e) {
+            direction = direction.wrapAround();
         }
+    }
+
+    private String buildOutput() {
+        return position.value() + ":" + direction.direction();
     }
 }

@@ -32,4 +32,11 @@ class MarsRoverTest {
 
         assertEquals("0:0:E", marsRover.execute("RRRRR"));
     }
+
+    @Test
+    void shouldWrapAroundWhenTheEndOfTheFridIsReached() throws PositionOutOfLimitsException {
+        var marsRover = new MarsRover();
+
+        assertEquals("0:9:W", marsRover.execute("RMMMMMMMMMM"));
+    }
 }

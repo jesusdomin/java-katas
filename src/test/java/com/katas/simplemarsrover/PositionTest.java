@@ -20,7 +20,7 @@ class PositionTest {
 
     @ParameterizedTest
     @MethodSource("movementsAndExpectedPositionsProvider")
-    void shouldIncreaseXValueWhenMoveToNorth(String direction, String expectedPosition) throws PositionOutOfLimitsException {
+    void shouldIncreaseXValueWhenMoveToNorth(Direction direction, String expectedPosition) throws PositionOutOfLimitsException {
         var position = new Position(5, 5);
 
         var newPosition = position.move(direction);
@@ -30,30 +30,30 @@ class PositionTest {
 
     @ParameterizedTest
     @MethodSource("movementsOutOfLimitProvider")
-    void shouldDetectPositionsOutOfLimit(Integer x, Integer y, String direction) throws PositionOutOfLimitsException {
+    void shouldDetectPositionsOutOfLimit(Integer x, Integer y, Direction direction) throws PositionOutOfLimitsException {
         var position = new Position(x, y);
         assertThrows(PositionOutOfLimitsException.class, () -> position.move(direction));
     }
 
     static Stream<Arguments> movementsAndExpectedPositionsProvider() {
         return Stream.of(
-                arguments("N", "6:5"),
-                arguments("S", "4:5"),
-                arguments("E", "5:6"),
-                arguments("W", "5:4")
+                arguments(new Direction(Direction.NORTH), "6:5"),
+                arguments(new Direction(Direction.SOUTH), "4:5"),
+                arguments(new Direction(Direction.EAST), "5:6"),
+                arguments(new Direction(Direction.WEST), "5:4")
         );
     }
 
     static Stream<Arguments> movementsOutOfLimitProvider() {
         return Stream.of(
-                arguments(0, 0, "S"),
-                arguments(0, 0, "W"),
-                arguments(9, 0, "N"),
-                arguments(9, 0, "W"),
-                arguments(0, 9, "E"),
-                arguments(0, 9, "S"),
-                arguments(9, 9, "N"),
-                arguments(9, 9, "E")
+                arguments(0, 0, new Direction(Direction.SOUTH)),
+                arguments(0, 0, new Direction(Direction.WEST)),
+                arguments(9, 0, new Direction(Direction.NORTH)),
+                arguments(9, 0, new Direction(Direction.WEST)),
+                arguments(0, 9, new Direction(Direction.EAST)),
+                arguments(0, 9, new Direction(Direction.SOUTH)),
+                arguments(9, 9, new Direction(Direction.NORTH)),
+                arguments(9, 9, new Direction(Direction.EAST))
         );
     }
 }

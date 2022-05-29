@@ -3,8 +3,11 @@ package com.katas.simplemarsrover;
 import java.util.Map;
 
 public class Direction {
-    private static final int NORTH = 0;
-    private static final int WEST = 3;
+    public static final int NORTH = 0;
+    public static final int WEST = 3;
+    public static final int SOUTH = 2;
+    public static final int EAST = 1;
+
     private static final Map<Integer, String> CARDINAL_POINTS_MAPPING = Map.of(
             0, "N",
             1, "E",
@@ -39,5 +42,21 @@ public class Direction {
 
     public Direction wrapAround() {
         return this.turnLeft().turnLeft();
+    }
+
+    public boolean isNorth() {
+        return value == NORTH;
+    }
+
+    public boolean isSouth() {
+        return value == SOUTH;
+    }
+
+    public boolean isEast() {
+        return value == EAST;
+    }
+
+    public boolean isWest() {
+        return value == WEST;
     }
 }

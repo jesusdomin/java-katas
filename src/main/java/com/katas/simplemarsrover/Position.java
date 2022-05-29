@@ -17,20 +17,20 @@ public class Position {
         this.y = y;
     }
 
-    public Position move(String direction) throws PositionOutOfLimitsException {
-        if (direction.equals("N")) {
+    public Position move(Direction direction) throws PositionOutOfLimitsException {
+        if (direction.isNorth()) {
             return new Position (x+1, y);
         }
 
-        if (direction.equals("S")) {
+        if (direction.isSouth()) {
             return new Position (x-1, y);
         }
 
-        if (direction.equals("E")) {
+        if (direction.isEast()) {
             return new Position (x, y+1);
         }
 
-        if (direction.equals("W")) {
+        if (direction.isWest()) {
             return new Position (x, y-1);
         }
 

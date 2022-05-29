@@ -38,7 +38,7 @@ public class MarsRover {
 
     private void move() {
         try {
-            position = position.move(direction.cardinalPoint());
+            position = position.move(direction);
         } catch (PositionOutOfLimitsException e) {
             direction = direction.wrapAround();
         }

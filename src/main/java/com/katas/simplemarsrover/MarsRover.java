@@ -25,6 +25,7 @@ public class MarsRover {
             case 'R' -> turnRight();
             case 'L' -> turnLeft();
             case 'M' -> move();
+            default -> ignoreCommand();
         }
     }
 
@@ -42,6 +43,10 @@ public class MarsRover {
         } catch (PositionOutOfLimitsException e) {
             direction = direction.wrapAround();
         }
+    }
+
+    private void ignoreCommand() {
+        // Do nothing
     }
 
     private String buildOutput() {

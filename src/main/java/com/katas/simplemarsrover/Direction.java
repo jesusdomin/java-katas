@@ -9,10 +9,10 @@ public class Direction {
     private static final int EAST = 1;
 
     private static final Map<Integer, String> CARDINAL_POINTS_MAPPING = Map.of(
-            0, "N",
-            1, "E",
-            2, "S",
-            3, "W");
+            NORTH, "N",
+            EAST, "E",
+            SOUTH, "S",
+            WEST, "W");
 
     private final Integer value;
 

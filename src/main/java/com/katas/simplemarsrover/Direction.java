@@ -36,4 +36,8 @@ public class Direction {
 
         return new Direction(nextDirection % 4 < 0 ? WEST : nextDirection);
     }
+
+    public Direction wrapAround() {
+        return this.turnLeft().turnLeft();
+    }
 }

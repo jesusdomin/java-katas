@@ -6,28 +6,28 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MarsRoverTest {
     @Test
-    void shouldKeepInitialPositionAndDirectionIfMoveCommendsIsEmpty() {
+    void shouldKeepInitialPositionAndDirectionIfMoveCommendsIsEmpty() throws PositionOutOfLimitsException {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:N", marsRover.execute(""));
     }
 
     @Test
-    void shouldChangeDirectionToEastIfRotateToRightFromInitialPosition() {
+    void shouldChangeDirectionToEastIfRotateToRightFromInitialPosition() throws PositionOutOfLimitsException {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:E", marsRover.execute("R"));
     }
 
     @Test
-    void shouldChangeDirectionToWestIfRotateToLeftFromInitialPosition() {
+    void shouldChangeDirectionToWestIfRotateToLeftFromInitialPosition() throws PositionOutOfLimitsException {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:W", marsRover.execute("L"));
     }
 
     @Test
-    void shouldProcessMultipleDirectionChanges() {
+    void shouldProcessMultipleDirectionChanges() throws PositionOutOfLimitsException {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:E", marsRover.execute("RRRRR"));

@@ -37,23 +37,23 @@ class PositionTest {
 
     static Stream<Arguments> movementsAndExpectedPositionsProvider() {
         return Stream.of(
-                arguments(new Direction(Direction.NORTH), "6:5"),
-                arguments(new Direction(Direction.SOUTH), "4:5"),
-                arguments(new Direction(Direction.EAST), "5:6"),
-                arguments(new Direction(Direction.WEST), "5:4")
+                arguments(Direction.toNorth(), "6:5"),
+                arguments(Direction.toSouth(), "4:5"),
+                arguments(Direction.toEast(), "5:6"),
+                arguments(Direction.toWest(), "5:4")
         );
     }
 
     static Stream<Arguments> movementsOutOfLimitProvider() {
         return Stream.of(
-                arguments(0, 0, new Direction(Direction.SOUTH)),
-                arguments(0, 0, new Direction(Direction.WEST)),
-                arguments(9, 0, new Direction(Direction.NORTH)),
-                arguments(9, 0, new Direction(Direction.WEST)),
-                arguments(0, 9, new Direction(Direction.EAST)),
-                arguments(0, 9, new Direction(Direction.SOUTH)),
-                arguments(9, 9, new Direction(Direction.NORTH)),
-                arguments(9, 9, new Direction(Direction.EAST))
+                arguments(0, 0, Direction.toSouth()),
+                arguments(0, 0, Direction.toWest()),
+                arguments(9, 0, Direction.toNorth()),
+                arguments(9, 0, Direction.toWest()),
+                arguments(0, 9, Direction.toEast()),
+                arguments(0, 9, Direction.toSouth()),
+                arguments(9, 9, Direction.toNorth()),
+                arguments(9, 9, Direction.toEast())
         );
     }
 }

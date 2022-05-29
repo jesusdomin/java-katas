@@ -10,17 +10,17 @@ public class MarsRover {
     }
 
     public String execute(String commands) {
-        processCommands(commands);
+        executeCommands(commands);
 
         return buildOutput();
     }
 
-    private void processCommands(String commands) {
+    private void executeCommands(String commands) {
         commands.chars()
-                .forEach(command -> processSingleCommand((char) command));
+                .forEach(command -> executeSingleCommand((char) command));
     }
 
-    private void processSingleCommand(Character command) {
+    private void executeSingleCommand(Character command) {
         switch (command) {
             case 'R' -> turnRight();
             case 'L' -> turnLeft();

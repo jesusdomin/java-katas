@@ -1,8 +1,8 @@
 package com.katas.simplemarsrover;
 
 public class Position {
-    private Integer x;
-    private Integer y;
+    private final Integer x;
+    private final Integer y;
 
     public Position() throws PositionOutOfLimitsException {
         this(0, 0);

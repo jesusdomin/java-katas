@@ -19,19 +19,19 @@ public class Position {
 
     public Position move(String direction) throws PositionOutOfLimitsException {
         if (direction.equals("N")) {
-            return new Position (++x, y);
+            return new Position (x+1, y);
         }
 
         if (direction.equals("S")) {
-            return new Position (--x, y);
+            return new Position (x-1, y);
         }
 
         if (direction.equals("E")) {
-            return new Position (x, ++y);
+            return new Position (x, y+1);
         }
 
         if (direction.equals("W")) {
-            return new Position (x, --y);
+            return new Position (x, y-1);
         }
 
         return this;

@@ -4,7 +4,7 @@ public class MarsRover {
     private Direction direction;
     private Position position;
 
-    public MarsRover() throws PositionOutOfLimitsException {
+    public MarsRover() {
         this.direction = new Direction();
         this.position = new Position();
     }
@@ -38,11 +38,7 @@ public class MarsRover {
     }
 
     private void move() {
-        try {
-            position = position.move(direction);
-        } catch (PositionOutOfLimitsException e) {
-            direction = direction.wrapAround();
-        }
+        position = position.move(direction);
     }
 
     private void ignoreCommand() {

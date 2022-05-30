@@ -12,7 +12,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class PositionTest {
     @Test
-    void shouldEnsureInitialPositionIsZeroZero() throws PositionOutOfLimitsException {
+    void shouldEnsureInitialPositionIsZeroZero() {
         var position = new Position();
 
         assertEquals("0:0", position.value());
@@ -20,7 +20,7 @@ class PositionTest {
 
     @ParameterizedTest
     @MethodSource("movementsAndExpectedPositionsProvider")
-    void shouldIncreaseXValueWhenMoveToNorth(Direction direction, String expectedPosition) throws PositionOutOfLimitsException {
+    void shouldIncreaseXValueWhenMoveToNorth(Direction direction, String expectedPosition) {
         var position = new Position(5, 5);
 
         var newPosition = position.move(direction);
@@ -30,9 +30,10 @@ class PositionTest {
 
     @ParameterizedTest
     @MethodSource("movementsOutOfLimitProvider")
-    void shouldDetectPositionsOutOfLimit(Integer x, Integer y, Direction direction) throws PositionOutOfLimitsException {
+    void shouldWrapAroundIfLimitIsReached(Integer x, Integer y, Direction direction, String expectedPositionOutput) {
         var position = new Position(x, y);
-        assertThrows(PositionOutOfLimitsException.class, () -> position.move(direction));
+
+        assertEquals(expectedPositionOutput, position.move(direction).value());
     }
 
     static Stream<Arguments> movementsAndExpectedPositionsProvider() {
@@ -46,14 +47,14 @@ class PositionTest {
 
     static Stream<Arguments> movementsOutOfLimitProvider() {
         return Stream.of(
-                arguments(0, 0, Direction.toSouth()),
-                arguments(0, 0, Direction.toWest()),
-                arguments(0, 9, Direction.toNorth()),
-                arguments(0, 9, Direction.toWest()),
-                arguments(9, 0, Direction.toEast()),
-                arguments(9, 0, Direction.toSouth()),
-                arguments(9, 9, Direction.toNorth()),
-                arguments(9, 9, Direction.toEast())
+                arguments(0, 0, Direction.toSouth(), "0:9"),
+                arguments(0, 0, Direction.toWest(), "9:0"),
+                arguments(0, 9, Direction.toNorth(), "0:0"),
+                arguments(0, 9, Direction.toWest(), "9:9"),
+                arguments(9, 0, Direction.toEast(), "0:0"),
+                arguments(9, 0, Direction.toSouth(), "9:9"),
+                arguments(9, 9, Direction.toNorth(), "9:0"),
+                arguments(9, 9, Direction.toEast(), "0:9")
         );
     }
 }

@@ -12,44 +12,43 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class MarsRoverTest {
     @Test
-    void shouldKeepInitialPositionAndDirectionIfMoveCommendsIsEmpty() throws PositionOutOfLimitsException {
+    void shouldKeepInitialPositionAndDirectionIfMoveCommendsIsEmpty() {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:N", marsRover.execute(""));
     }
 
     @Test
-    void shouldChangeDirectionToEastIfRotateToRightFromInitialPosition() throws PositionOutOfLimitsException {
+    void shouldChangeDirectionToEastIfRotateToRightFromInitialPosition() {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:E", marsRover.execute("R"));
     }
 
     @Test
-    void shouldChangeDirectionToWestIfRotateToLeftFromInitialPosition() throws PositionOutOfLimitsException {
+    void shouldChangeDirectionToWestIfRotateToLeftFromInitialPosition() {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:W", marsRover.execute("L"));
     }
 
     @Test
-    void shouldProcessMultipleDirectionChanges() throws PositionOutOfLimitsException {
+    void shouldProcessMultipleDirectionChanges() {
         var marsRover = new MarsRover();
 
         assertEquals("0:0:E", marsRover.execute("RRRRR"));
     }
 
     @Test
-    void shouldWrapAroundWhenTheEndOfTheFridIsReached() throws PositionOutOfLimitsException {
+    void shouldWrapAroundWhenTheEndOfTheFridIsReached() {
         var marsRover = new MarsRover();
 
-        assertEquals("9:0:W", marsRover.execute("RMMMMMMMMMM"));
+        assertEquals("0:0:E", marsRover.execute("RMMMMMMMMMM"));
     }
 
     @ParameterizedTest
     @MethodSource("kataCommandsExamples")
-    void shouldFinishInTheCorrectPositionAndDirectionAfterExecuteCommands(String commands, String expectedOutput)
-            throws PositionOutOfLimitsException {
+    void shouldFinishInTheCorrectPositionAndDirectionAfterExecuteCommands(String commands, String expectedOutput) {
         var marsRover = new MarsRover();
 
         assertEquals(expectedOutput, marsRover.execute(commands));
@@ -57,8 +56,8 @@ class MarsRoverTest {
 
     static Stream<Arguments> kataCommandsExamples() {
         return Stream.of(
-                arguments("MMRMMLM", "2:3:N")
-                // arguments("MMMMMMMMMM", "0:0:N")
+                arguments("MMRMMLM", "2:3:N"),
+                arguments("MMMMMMMMMM", "0:0:N")
         );
     }
 }

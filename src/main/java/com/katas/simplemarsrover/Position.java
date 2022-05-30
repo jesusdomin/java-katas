@@ -19,19 +19,19 @@ public class Position {
 
     public Position move(Direction direction) throws PositionOutOfLimitsException {
         if (direction.isNorth()) {
-            return new Position (x+1, y);
-        }
-
-        if (direction.isSouth()) {
-            return new Position (x-1, y);
-        }
-
-        if (direction.isEast()) {
             return new Position (x, y+1);
         }
 
-        if (direction.isWest()) {
+        if (direction.isSouth()) {
             return new Position (x, y-1);
+        }
+
+        if (direction.isEast()) {
+            return new Position (x+1, y);
+        }
+
+        if (direction.isWest()) {
+            return new Position (x-1, y);
         }
 
         return this;

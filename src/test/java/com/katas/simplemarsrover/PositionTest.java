@@ -37,10 +37,10 @@ class PositionTest {
 
     static Stream<Arguments> movementsAndExpectedPositionsProvider() {
         return Stream.of(
-                arguments(Direction.toNorth(), "6:5"),
-                arguments(Direction.toSouth(), "4:5"),
-                arguments(Direction.toEast(), "5:6"),
-                arguments(Direction.toWest(), "5:4")
+                arguments(Direction.toNorth(), "5:6"),
+                arguments(Direction.toSouth(), "5:4"),
+                arguments(Direction.toEast(), "6:5"),
+                arguments(Direction.toWest(), "4:5")
         );
     }
 
@@ -48,10 +48,10 @@ class PositionTest {
         return Stream.of(
                 arguments(0, 0, Direction.toSouth()),
                 arguments(0, 0, Direction.toWest()),
-                arguments(9, 0, Direction.toNorth()),
-                arguments(9, 0, Direction.toWest()),
-                arguments(0, 9, Direction.toEast()),
-                arguments(0, 9, Direction.toSouth()),
+                arguments(0, 9, Direction.toNorth()),
+                arguments(0, 9, Direction.toWest()),
+                arguments(9, 0, Direction.toEast()),
+                arguments(9, 0, Direction.toSouth()),
                 arguments(9, 9, Direction.toNorth()),
                 arguments(9, 9, Direction.toEast())
         );

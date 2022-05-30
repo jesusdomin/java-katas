@@ -18,7 +18,7 @@ public class Direction {
     private final Integer value;
 
     public Direction() {
-        this(0);
+        this(NORTH);
     }
 
     public Direction(Integer direction) {

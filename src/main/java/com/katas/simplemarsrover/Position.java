@@ -1,11 +1,14 @@
 package com.katas.simplemarsrover;
 
 public class Position {
+    private static final Integer MIN_POSITION = 0;
+    private static final Integer MAX_POSITION = 9;
+
     private final Integer x;
     private final Integer y;
 
     public Position() {
-        this(0, 0);
+        this(MIN_POSITION, MIN_POSITION);
     }
 
     public Position(Integer x, Integer y) {
@@ -38,12 +41,12 @@ public class Position {
     }
 
     private Integer wrapAroundIfLimitIsReached(Integer coordinate) {
-        if (coordinate < 0) {
-            return 9;
+        if (coordinate < MIN_POSITION) {
+            return MAX_POSITION;
         }
 
-        if (coordinate > 9) {
-            return 0;
+        if (coordinate > MAX_POSITION) {
+            return MIN_POSITION;
         }
 
         return coordinate;

@@ -1,12 +1,13 @@
 package com.katas.simplemarsrover;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class Direction {
-    private static final int NORTH = 0;
-    private static final int WEST = 3;
-    private static final int SOUTH = 2;
-    private static final int EAST = 1;
+    private static final Integer NORTH = 0;
+    private static final Integer WEST = 3;
+    private static final Integer SOUTH = 2;
+    private static final Integer EAST = 1;
 
     private static final Map<Integer, String> CARDINAL_POINTS_MAPPING = Map.of(
             NORTH, "N",
@@ -57,18 +58,18 @@ public class Direction {
     }
 
     public boolean isNorth() {
-        return value == NORTH;
+        return Objects.equals(value, NORTH);
     }
 
     public boolean isSouth() {
-        return value == SOUTH;
+        return Objects.equals(value, SOUTH);
     }
 
     public boolean isEast() {
-        return value == EAST;
+        return Objects.equals(value, EAST);
     }
 
     public boolean isWest() {
-        return value == WEST;
+        return Objects.equals(value, WEST);
     }
 }

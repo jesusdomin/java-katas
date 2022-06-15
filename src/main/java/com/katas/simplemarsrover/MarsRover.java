@@ -3,10 +3,12 @@ package com.katas.simplemarsrover;
 public class MarsRover {
     private Direction direction;
     private Position position;
+    private final Grid grid;
 
     public MarsRover() {
         this.direction = new Direction();
         this.position = new Position();
+        this.grid = new Grid();
     }
 
     public String execute(String commands) {
@@ -38,7 +40,7 @@ public class MarsRover {
     }
 
     private void move() {
-        position = position.move(direction);
+        position = grid.calculateNextPosition(position, direction);
     }
 
     private void ignoreCommand() {

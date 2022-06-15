@@ -39,23 +39,20 @@ class MarsRoverTest {
         assertEquals("0:0:E", marsRover.execute("RRRRR"));
     }
 
-    @Test
-    void shouldWrapAroundWhenTheEndOfTheFridIsReached() {
-        var marsRover = new MarsRover();
-
-        assertEquals("0:0:E", marsRover.execute("RMMMMMMMMMM"));
-    }
-
     @ParameterizedTest
-    @MethodSource("kataCommandsExamples")
-    void shouldFinishInTheCorrectPositionAndDirectionAfterExecuteCommands(String commands, String expectedOutput) {
+    @MethodSource("movementsOutOfLimitProvider")
+    void shouldWrapAroundWhenTheEndOfTheFridIsReached(String commands, String expectedOutput) {
         var marsRover = new MarsRover();
 
         assertEquals(expectedOutput, marsRover.execute(commands));
     }
 
-    static Stream<Arguments> kataCommandsExamples() {
+    static Stream<Arguments> movementsOutOfLimitProvider() {
         return Stream.of(
+                arguments("RMMMMMMMMMM", "0:0:E"),
+                arguments("RRM", "0:9:S"),
+                arguments("LM", "9:0:W"),
+                arguments("MMMMMMMMMM", "0:0:N"),
                 arguments("MMRMMLM", "2:3:N"),
                 arguments("MMMMMMMMMM", "0:0:N")
         );
